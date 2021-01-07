@@ -36,7 +36,7 @@ const Filter = ({ setPostsFilter, currentFilterName }) => {
   };
 
   return (
-    <div className=" pb-3 pr-3 red d-flex flex-column align-items-end">
+    <div className=" col-md-10 col-lg-8 mx-auto pb-3 pr-3 red d-flex flex-column align-items-end">
       {filters.map(renderFilter)}
     </div>
   );
