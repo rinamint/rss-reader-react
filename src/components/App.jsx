@@ -17,6 +17,14 @@ const App = () => (
     <Feeds />
     <Filter />
     <Posts />
+    <footer className="footer border-top py-3 mt-5">
+      <div className="container-xl">
+        <div className="text-center">
+          created by
+          <a href="https://github.com/rinamint"> Arina Vaslyaeva</a>
+        </div>
+      </div>
+    </footer>
   </div>
 );
 
