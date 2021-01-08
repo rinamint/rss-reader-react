@@ -2,9 +2,8 @@ import _ from 'lodash';
 import axios from 'axios';
 
 const parsing = async (url) => {
-  // const corsApiHost = 'https://cors-anywhere.herokuapp.com/';
-  // const response = await axios.get(`${corsApiHost}${url}`);
-  const response = await axios.get(url);
+  const corsApiHost = 'https://cors-anywhere.herokuapp.com/';
+  const response = await axios.get(`${corsApiHost}${url}`);
   const parser = new DOMParser();
   const doc = parser.parseFromString(response.data, 'application/xml');
   const name = doc.querySelector('channel > title');
