@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import _ from 'lodash';
 
-import parsing from './utils';
+import parsing from '../utils';
 
 export const addUrlRequest = createAction('ADD_URL_REQUEST');
 export const addUrlSuccess = createAction('ADD_URL_SUCCESS');
