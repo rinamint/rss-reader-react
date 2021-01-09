@@ -1,11 +1,8 @@
 import _ from 'lodash';
-import axios from 'axios';
 
-const parsing = async (url) => {
-  const corsApiHost = 'https://cors-anywhere.herokuapp.com/';
-  const response = await axios.get(`${corsApiHost}${url}`);
+const parsing = async (data, url) => {
   const parser = new DOMParser();
-  const doc = parser.parseFromString(response.data, 'application/xml');
+  const doc = parser.parseFromString(data, 'application/xml');
   const name = doc.querySelector('channel > title');
   const desc = doc.querySelector('channel > description');
   const feedId = _.uniqueId();

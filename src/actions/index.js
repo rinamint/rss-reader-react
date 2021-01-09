@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import _ from 'lodash';
+import axios from 'axios';
 
 import parsing from '../utils';
 
@@ -19,7 +20,8 @@ export const getNewPosts = (feeds, oldPosts) => async (dispatch) => {
   try {
     Promise.allSettled(feeds.map(async ({ url, id }) => {
       const corsApiHost = 'https://cors-anywhere.herokuapp.com/';
-      const { posts } = await parsing(`${corsApiHost}${url}`);
+      const response = await axios.get(`${corsApiHost}${url}`);
+      const { posts } = await parsing(response.data, url);
       const onlyFeedPosts = oldPosts.filter((post) => post.feedId === id);
       const newPosts = _.differenceBy(posts, onlyFeedPosts, 'link')
         .map((post) => ({ ...post, feedId: id }));
@@ -34,7 +36,9 @@ export const getNewPosts = (feeds, oldPosts) => async (dispatch) => {
 export const addUrl = (url) => async (dispatch) => {
   dispatch(addUrlRequest());
   try {
-    const { channel, posts } = await parsing(url);
+    const corsApiHost = 'https://cors-anywhere.herokuapp.com/';
+    const response = await axios.get(`${corsApiHost}${url}`);
+    const { channel, posts } = await parsing(response.data, url);
     dispatch(addUrlSuccess({ channel, posts }));
   } catch (e) {
     console.log(e);
