@@ -7,15 +7,10 @@ import reducers from './reducers/index.js';
 import App from './components/App.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-/* eslint-disable no-underscore-dangle */
-const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-const devtoolMiddleware = ext && ext();
-
 const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk),
-    devtoolMiddleware,
   ),
 );
 

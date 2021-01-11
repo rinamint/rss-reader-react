@@ -27,7 +27,6 @@ const data = handleActions({
 
   [actions.getPostsSuccess](state, { payload: newPosts }) {
     const { posts } = state;
-    console.log(newPosts);
     return {
       ...state,
       posts: [...newPosts, ...posts],

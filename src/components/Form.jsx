@@ -67,7 +67,6 @@ class Form extends React.Component {
    handleRequest = (values) => {
      const { feeds } = this.props;
      const urls = feeds.map((feed) => feed.url);
-     console.log(urls, values);
      if (urls.includes(values.url)) {
        throw new SubmissionError({
          url: 'This url has been added',
