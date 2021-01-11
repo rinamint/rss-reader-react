@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import _ from 'lodash';
 import axios from 'axios';
-
 import parsing from '../utils';
 
 export const addUrlRequest = createAction('ADD_URL_REQUEST');
